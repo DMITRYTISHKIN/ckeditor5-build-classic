@@ -105,6 +105,16 @@ export default class InfoBlockEditing extends Plugin {
     let wasFixed = false;
 
     for (const entry of changes) {
+      if (
+        entry.type === 'remove' &&
+        entry.name === 'info-block' &&
+        changes.length > 1 &&
+        this.editor.editing.view.document.getRoot().childCount > 1
+      ) {
+        const paragraph = changes[1].position.parent.getChild(changes[1].position.path[0]);
+        writer.remove(paragraph);
+      }
+
       if (entry.type == 'remove' && entry.position.parent.is('info-block-edit')) {
         wasFixed = this._fixTableCellContent(entry.position.parent, writer) || wasFixed;
       }

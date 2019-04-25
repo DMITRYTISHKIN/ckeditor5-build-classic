@@ -72,7 +72,7 @@ export default class HintUI extends Plugin {
       const button = new ButtonView(locale);
 
       button.isEnabled = true;
-      button.label = t('Hint');
+      button.label = t('Тултип');
       button.class = 'hint-icon'
       button.keystroke = linkKeystroke;
       button.tooltip = true;

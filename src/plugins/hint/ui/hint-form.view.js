@@ -23,11 +23,11 @@ export default class HintFormView extends View {
 
     this.editableUiView = new HintEditorView(this.locale);
 
-    this.saveButtonView = this._createButton(t('Save'), 'save-hint-icon');
+    this.saveButtonView = this._createButton(t('Сохранить'), 'save-hint-icon');
     this.saveButtonView.type = 'submit';
 
-    this.cancelButtonView = this._createButton(t('Cancel'), 'cancel-hint-icon', 'cancel');
-    this.deleteHintButtonView = this._createButton(t('Delete'), 'delete-hint-icon', 'delete');
+    this.cancelButtonView = this._createButton(t('Отменить'), 'cancel-hint-icon', 'cancel');
+    this.deleteHintButtonView = this._createButton(t('Удалить'), 'delete-hint-icon', 'delete');
 
     this._focusables = new ViewCollection();
 

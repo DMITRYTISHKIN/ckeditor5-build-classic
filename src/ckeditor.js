@@ -16,6 +16,9 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import InfoBlock from './plugins/info-block/info-block';
 import InfoBlockStyle from './plugins/info-block/info-block-style';
 import Hint from './plugins/hint/hint';
+import Language from './plugins/language/language';
+
+import './style.css';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -30,24 +33,17 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	InfoBlock,
 	InfoBlockStyle,
-	Hint
+	Hint,
+	Language
 ];
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
 	toolbar: {
-		items: [
-			'heading',
-			'|',
-			'bold',
-			'info-block',
-			'hint',
-			'link',
-			'bulletedList',
-			'numberedList',
-			'undo',
-			'redo'
-		]
+		items: ['bold', 'bulletedList', 'numberedList', 'hint', 'link', 'info-block', 'language']
 	},
+	languages: [
+    'RU', 'BY', 'KZ', 'KG', 'AM'
+  ],
 	language: 'ru'
 };

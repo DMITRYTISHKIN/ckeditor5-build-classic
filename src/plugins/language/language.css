@@ -1,0 +1,16 @@
+.ck.ck-toolbar .language-container {
+  float: right;
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 12px;
+  height: 100%;
+  margin: 0;
+  align-items: center;
+}
+
+.ck.ck-toolbar {
+  position: relative;
+}

@@ -18,7 +18,7 @@ export default class InfoBlockCommand extends Command {
   execute() {
     const model = this.editor.model;
     const selection = model.document.selection;
-    const insertPosition = findOptimalInsertionPosition(selection, model);
+    const insertPosition = this.editor.model.createPositionBefore(selection.getFirstPosition().parent);
 
     model.change((writer) => {
       const block = writer.createElement('info-block');

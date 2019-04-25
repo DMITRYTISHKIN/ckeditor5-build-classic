@@ -44,21 +44,16 @@ export default class InfoBlockUI extends Plugin {
     const linkCommand = editor.commands.get('info-block');
     const t = editor.t;
 
-    // Handle the `Ctrl+K` keystroke and show the panel.
     editor.keystrokes.set(linkKeystroke, (keyEvtData, cancel) => {
-      // Prevent focusing the search bar in FF and opening new tab in Edge. #153, #154.
       cancel();
-
-      if (linkCommand.isEnabled) {
-        this._showUI();
-      }
+      editor.execute('info-block');
     });
 
     editor.ui.componentFactory.add('info-block', locale => {
       const button = new ButtonView(locale);
 
       button.isEnabled = true;
-      button.label = t('Info block');
+      button.label = t('Блок-уведомление');
       button.class = 'info-block-icon'
       button.keystroke = linkKeystroke;
       button.tooltip = true;
@@ -74,38 +69,4 @@ export default class InfoBlockUI extends Plugin {
       return button;
     });
   }
-
-  _showUI() {
-    const editor = this.editor;
-    debugger
-    // const linkCommand = editor.commands.get('addHint');
-
-    // if (!linkCommand.isEnabled) {
-    //   return;
-    // }
-
-  }
-
-  _hideUI() {
-    if (!this._isUIInPanel) {
-      return;
-    }
-
-    const editor = this.editor;
-
-    this.stopListening(editor.ui, 'update');
-
-    editor.editing.view.focus();
-
-    this._removeFormView();
-  }
-
-  findLinkElementAncestor(position) {
-    return position.getAncestors().find(ancestor => this.isLinkElement(ancestor));
-  }
-
-  isLinkElement(node) {
-    return node.is('attributeElement') && !!node.getCustomProperty('addHint');
-  }
-
 }
